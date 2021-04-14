@@ -11,8 +11,10 @@
             <div class="row justify-content-md-center">
                 <h1><u>JohnJuneJuly</h1></u>
             </div> <!-- end of row -->
+            <hr>
             <div id="Stats" class="row justify-content-md-center">
                 <hr>
+                <button onclick="test();">test</button>
                 <!-- <div id="Stats"></div> -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
@@ -27,6 +29,26 @@
         <script src="http://localhost:3001/socket.io/socket.io.js"></script> -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script>
+            function test(){
+                const Http = new XMLHttpRequest();
+                const url='https://api.opendota.com/api/players/162757300';
+                Http.open("GET", url);
+                Http.send();
+
+                Http.onreadystatechange = (e) => {
+                    console.log(Http.responseText)
+                    if (Http.responseText.length > 0){
+                        console.log(JSON.parse(Http.responseText));
+                        let data = JSON.parse(Http.responseText);
+                        // $("#Stats").append(`
+                        //     <div class="col-sm-4 align-self-center" style="display: inline-block; border-style: solid;">
+                        //         <img src='${array[i].profile.avatar}'/><h3>${array[i].profile.personaname}</h3>
+                        //         <p3>MMR estimate: ${array[i].mmr_estimate.estimate}</p3>
+                        //     </div>
+                        // `);
+                    }
+                }
+            }
         </script>
     </body>
 </html>
